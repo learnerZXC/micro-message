@@ -1,22 +1,15 @@
 package comzxc.dao;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import com.zxc.db.DBAccess;
 import com.zxc.entity.Message;
+import org.apache.log4j.PropertyConfigurator;
 
 /**
  *和message表相关的数据库操作
@@ -70,16 +63,14 @@ public class MessageDao {
 	}
 	
 	public static void main(String[] args) {
+        String log4jConfPath = "src/log4j.properties";
+        PropertyConfigurator.configure(log4jConfPath);
 		System.out.println("aaaaa");
-		MessageDao messageDao = new MessageDao();
-		messageDao.queryMessageList("", "");
-		Map<String, Message> messageMap = new HashMap<String,Message>();
-		messageMap.put("key",new Message());
-//		Log log = LogFactory.getLog(MessageDao.class);
-//		log.debug("debugadf");
-//		log.info("infoadf");
-//		log.warn("warnadf");
-//		log.error("erroradf");
+		Logger log = Logger.getLogger(MessageDao.class);
+		log.debug("debug1111");
+		log.info("info1111");
+		log.warn("warn1111");
+		log.error("error1111");
 	}
 	/**
 	 * 根据查询条件查询消息列表
